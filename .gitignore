@@ -1,0 +1,16 @@
+ph-backend/node_modules
+ph-frontend/node_modules
+
+ph-frontend/node_modules/
+ph-frontend/.expo/
+ph-frontend/npm-debug.*
+ph-frontend/*.jks
+ph-frontend/*.p8
+ph-frontend/*.p12
+ph-frontend/*.key
+ph-frontend/*.mobileprovision
+ph-frontend/*.orig.*
+ph-frontend/web-build/
+
+# macOS
+ph-frontend/.DS_Store

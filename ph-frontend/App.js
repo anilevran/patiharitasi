@@ -1,0 +1,113 @@
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, Text, View , Image} from 'react-native';
+import { Dimensions } from 'react-native';
+import {
+  useFonts,
+  Poppins_700Bold,
+  Poppins_600SemiBold,
+} from "@expo-google-fonts/poppins";
+
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
+export default function App() {
+  let [fontsLoaded] = useFonts({
+    Poppins_700Bold,
+    Poppins_600SemiBold
+  });
+  return (
+    <View style={styles.container}>
+      <View style={styles.appTitle}>
+        <View style={styles.imageContainer}>
+      <Image
+        style={styles.iconStyle}
+        source={require('./assets/patiharitasiIcon.jpg')}
+      />
+      </View>
+
+      <Text style={styles.text}>Pati Haritası</Text>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>Kayıt Ol</Text>
+        </View>
+        <View style={styles.button}>
+        <Text style={styles.buttonText}>Giriş Yap</Text>
+        </View>
+
+      </View>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    width: windowWidth,
+    height: windowHeight,
+    backgroundColor: '#07C775',
+    display:'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: 30
+
+
+  },
+  appTitle: {
+    width: 300,
+    height: 200,
+    padding: 10,
+    marginTop: 100,
+    display: 'flex',
+    alignItems: 'center',
+
+  },
+  imageContainer: {
+    width: 120,
+    height: 120,
+    marginBottom: 30,
+    borderWidth: 2,
+    borderRadius: 10
+    
+  },
+  iconStyle: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10
+  },
+  text: {
+    color: '#FFF',
+    fontFamily: "Poppins_600SemiBold",
+    fontSize: 25
+
+  },
+  
+  buttonContainer: {
+    width: 350,
+    height: 150,
+    padding: 10,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    marginTop: 200,
+  },
+  button: {
+    width: '100%',
+    height: '40%',
+    borderWidth: 2,
+    borderColor: '#FFF',
+    borderRadius: 50,
+    display:'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonText: {
+    fontFamily: "Poppins_600SemiBold",
+    fontSize: 18,
+    color: '#FFF'
+
+  }
+});
