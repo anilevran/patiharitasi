@@ -1,12 +1,11 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const port = 12000;
 
-const PORT = 6000;
+app.get("/", (req, res) => {
+  res.send("Api working properly");
+});
 
-app.listen(PORT,() => {
-    console.log('App listening on port ' + PORT)
-})
-app.get('/',(req,res) => {
-    console.log(res)
-    res.send('App working!');
-})
+app.listen(port, () => {
+  console.log(`App listening at port:${port}`);
+});
