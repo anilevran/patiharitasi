@@ -1,113 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View , Image} from 'react-native';
-import { Dimensions } from 'react-native';
-import {
-  useFonts,
-  Poppins_700Bold,
-  Poppins_600SemiBold,
-} from "@expo-google-fonts/poppins";
+import "react-native-gesture-handler";
+import React, { Component } from "react";
 
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import { Home } from "./src/Pages/Home";
+import { Signin } from "./src/Pages/Signin";
+import { Signup } from "./src/Pages/Signup";
+import { Mainapp } from "./src/Pages/Mainapp";
 
-export default function App() {
-  let [fontsLoaded] = useFonts({
-    Poppins_700Bold,
-    Poppins_600SemiBold
-  });
-  return (
-    <View style={styles.container}>
-      <View style={styles.appTitle}>
-        <View style={styles.imageContainer}>
-      <Image
-        style={styles.iconStyle}
-        source={require('./assets/patiharitasiIcon.jpg')}
-      />
-      </View>
+const Stack = createStackNavigator();
 
-      <Text style={styles.text}>Pati Haritası</Text>
-      </View>
-
-      <View style={styles.buttonContainer}>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>Kayıt Ol</Text>
-        </View>
-        <View style={styles.button}>
-        <Text style={styles.buttonText}>Giriş Yap</Text>
-        </View>
-
-      </View>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    width: windowWidth,
-    height: windowHeight,
-    backgroundColor: '#07C775',
-    display:'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: 30
-
-
-  },
-  appTitle: {
-    width: 300,
-    height: 200,
-    padding: 10,
-    marginTop: 100,
-    display: 'flex',
-    alignItems: 'center',
-
-  },
-  imageContainer: {
-    width: 120,
-    height: 120,
-    marginBottom: 30,
-    borderWidth: 2,
-    borderRadius: 10
-    
-  },
-  iconStyle: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 10
-  },
-  text: {
-    color: '#FFF',
-    fontFamily: "Poppins_600SemiBold",
-    fontSize: 25
-
-  },
-  
-  buttonContainer: {
-    width: 350,
-    height: 150,
-    padding: 10,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    marginTop: 200,
-  },
-  button: {
-    width: '100%',
-    height: '40%',
-    borderWidth: 2,
-    borderColor: '#FFF',
-    borderRadius: 50,
-    display:'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  buttonText: {
-    fontFamily: "Poppins_600SemiBold",
-    fontSize: 18,
-    color: '#FFF'
-
+export default class App extends Component {
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Home"
+          headerMode={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="SignUp" component={Signup} />
+          <Stack.Screen name="SignIn" component={Signin} />
+          <Stack.Screen name="MainApp" component={Mainapp} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
   }
-});
+}
